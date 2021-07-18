@@ -23,6 +23,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.transaction.reactive.TransactionSynchronizationManager;
 
 import com.example.project1.models.Book;
+import com.example.project1.models.BookList;
 import com.example.project1.models.User;
 import com.example.project1.repositories.BookRepository;
 import com.example.project1.repositories.UserRepository;
@@ -45,6 +46,14 @@ public class BookService {
 		List<Book> books = new ArrayList<>();
 		bookRepository.findAll().forEach(books::add);
 		return books;
+	}
+	
+	public BookList getBookList() {
+		log.info("inside BookService.getBookList");
+		List<Book> book = new ArrayList<>();
+		bookRepository.findAll().forEach(book::add);
+		BookList bookList = new BookList(book);
+		return bookList;
 	}
 	
 	@Transactional
