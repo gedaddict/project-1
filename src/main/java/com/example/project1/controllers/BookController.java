@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.project1.models.Book;
+import com.example.project1.models.BookList;
 import com.example.project1.services.BookService;
 
 @RestController
@@ -30,16 +31,15 @@ public class BookController {
 	BookService bookService;
 
 	@GetMapping ("/books")
-	public List<Book> getAllBooks() {
+	public BookList getBookList() {
 		log.info("inside @GetMapping /books");
-		return bookService.getAllBooks();
+		return bookService.getBookList();
 	}
 	
 	@PostMapping ("/books")
-	public String addBook(@RequestBody Book book) {
+	public Book addBook(@RequestBody Book book) {
 		log.info("inside @PostMapping /books");
-		Book addBook = bookService.addBook(book);
-		return "New Book " +addBook.getName() + " added";
+		return bookService.addBook(book);
 	}
 	
 	@GetMapping ("/books/{bookNumber}")
