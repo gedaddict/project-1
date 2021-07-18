@@ -69,6 +69,14 @@ public class Book {
 		this.edition = edition;
 	}
 	
+	// for testing only
+	public Book(int bookNumber, String name, String author, String edition) {
+		this.bookNumber = bookNumber;
+		this.name = name;
+		this.author = author;
+		this.edition = edition;
+	}
+
 	public void setBookNumber(int bookNumber) {
 		this.bookNumber = bookNumber;
 	}
